@@ -1,6 +1,5 @@
 import telebot
 
-# 1760088503:AAEuAemvSa77HwEJ8pRuxsyzkv8kT47NmTA
 from telebot import types
 
 bot = telebot.TeleBot("1760088503:AAEuAemvSa77HwEJ8pRuxsyzkv8kT47NmTA", parse_mode=None)
@@ -33,21 +32,6 @@ def send_welcome(message):
     markup_inline.add(item_big, item_small)
     bot.send_message(message.chat.id, 'Какую вы хотите пиццу? Большую или маленькую?',
                      reply_markup=markup_inline)
-
-
-# @bot.callback_query_handler(func=lambda call: True)
-# def answer(call):
-#     if call.data == 'big':
-#         markup_reply = types.ReplyKeyboardMarkup(resize_keyboard=True)
-#         item_cash = types.KeyboardButton('Наличкой')
-#         item_card = types.KeyboardButton('Картой')
-#         markup_reply.add(item_cash, item_card)
-#         bot.send_message(call.message.chat.id, 'Выберите способ оплаты',
-#                          reply_markup=markup_reply)
-
-#
-# elif call.data == 'small':
-#     pass
 
 
 @bot.message_handler(content_types=['text'])
@@ -99,21 +83,6 @@ def echo_all(message):
         markup_inline.add(item_big, item_small)
         bot.send_message(message.chat.id, 'Какую вы хотите пиццу? Большую или маленькую?',
                          reply_markup=markup_inline)
-
-
-# @bot.message_handler(content_types=['text'])
-# def send_goodbye(message):
-#     markup_reply = types.ReplyKeyboardMarkup(resize_keyboard=True)
-#     item_cash = types.KeyboardButton('Да')
-#     item_card = types.KeyboardButton('Нет')
-#     markup_reply.add(item_cash, item_card)
-#     if data[0].keys() == 'big':
-#         pizza = 'Большую'
-#     else:
-#         pizza = 'Маленькую'
-#     text = f"Вы хотите {pizza} пиццу оплата-{data[0][data[0].keys()[0]]} ?"
-#     bot.send_message(message.chat.id, text,
-#                      reply_markup=markup_reply)
 
 
 bot.polling()
