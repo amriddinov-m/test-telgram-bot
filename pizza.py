@@ -25,8 +25,9 @@ def send_goodbye(message):
                      reply_markup=markup_reply)
 
 
-@bot.message_handler(commands=['start', 'help'])
+@bot.message_handler(commands=['start'])
 def send_welcome(message):
+    data.clear()
     markup_inline = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item_big = types.KeyboardButton('Большую')
     item_small = types.KeyboardButton('Маленькую')
